@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DOM Event Handling</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 30px;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    .box-container {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+    }
+    .box {
+      width: 80px;
+      height: 80px;
+      border: 2px solid #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    input, button {
+      margin-top: 15px;
+      padding: 8px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <h1 id="header">Hello</h1>
+
+  <!-- Boxes -->
+  <div class="box-container">
+    <div class="box" data-color="red">Red</div>
+    <div class="box" data-color="blue">Blue</div>
+    <div class="box" data-color="green">Green</div>
+    <div class="box" data-color="yellow">Yellow</div>
+  </div>
+
+  <!-- Input + Button -->
+  <input type="text" id="nameInput" placeholder="Enter your name">
+  <button id="greetBtn">Greet Me</button>
+
+  <script>
+    // Greeting functionality
+    const header = document.getElementById("header");
+    const nameInput = document.getElementById("nameInput");
+    const greetBtn = document.getElementById("greetBtn");
+
+    greetBtn.addEventListener("click", () => {
+      const name = nameInput.value.trim();
+      if (name) {
+        header.textContent = `Hello, ${name}`;
+      } else {
+        header.textContent = "Hello";
+      }
+    });
+
+    // Box color change functionality
+    const boxes = document.querySelectorAll(".box");
+    boxes.forEach(box => {
+      box.addEventListener("click", () => {
+        box.style.backgroundColor = box.dataset.color;
+      });
+    });
+  </script>
+</body>
+</html>
